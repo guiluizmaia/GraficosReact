@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './styles/App.css';
-import Graph from './components/Graph';
+
+import Barra from './pages/barra';
 
 function App() {
-  return (
-    <Graph />
+    return (
+     <>
+        <Barra /></> 
   );
 }
 
