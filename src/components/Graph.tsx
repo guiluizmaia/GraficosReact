@@ -5,11 +5,11 @@ import '../styles/Graph.css'
 const data01 = [
   {
     "name": "Group A",
-    "value": 400
+    "value": "400"
   },
   {
     "name": "Group B",
-    "value": 300
+    "value": "300"
   },
   {
     "name": "Group C",
