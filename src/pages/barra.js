@@ -3,6 +3,7 @@ import Top from '../components/Top';
 
 import '../styles/pages/Barra.css';
 
+import Graph from '../components/Graph';
 
 
 function Barra() {
@@ -37,7 +38,7 @@ const [datas, setDatas] = useState([]);
   const geraGraph = ()=>{
     inputs.map((input, index)=>{
       var t = parseFloat(input)
-      datas[index] = JSON.parse(JSON.stringify({name: nomes[index], value: t}))
+      datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t}))
       setDatas([...datas]);
     })
     console.log(datas)
@@ -69,6 +70,8 @@ const [datas, setDatas] = useState([]);
         ))
     }
     <button onClick={geraGraph}>Gerar gráfico</button>
+
+    <Graph/>
     
    
 
