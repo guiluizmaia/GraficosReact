@@ -10,6 +10,8 @@ function Barra() {
 const [inputs, setInputs] = useState([""]);
 const [nomes, setNomes] = useState([]);
 const [datas, setDatas] = useState([]);
+var car = false;
+
 
   const addButton = (e) =>{
     e.preventDefault();
@@ -42,6 +44,8 @@ const [datas, setDatas] = useState([]);
       setDatas([...datas]);
     })
     console.log(datas)
+    car = !car;
+    //console.log(car)
   }
 
   return (
@@ -70,8 +74,7 @@ const [datas, setDatas] = useState([]);
         ))
     }
     <button onClick={geraGraph}>Gerar gráfico</button>
-
-    <Graph/>
+   <Graph/>
     
    
 
