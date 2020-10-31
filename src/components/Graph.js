@@ -40,35 +40,44 @@ class Graph extends Component {
     var teste = props.t;
     this.teste = teste;
     this.state = {
-      estado: teste
+      estado: false
     }
   }
 
   
+  
 
   render () {
-    {  
-      console.log(this.state.estado)
-    } 
     
+    const troca = ()=>{
+      this.setState({
+        estado: !this.state.estado
+      })
+    }
+
     if(this.state.estado){
     return (
-   
+      <div> 
+      <button onClick={troca}>Gerar gráfico</button>  
       <PieChart className="graph" width={500} height={500}>
         <Pie data={/*this.props.datas*/ data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" label/>
        
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
       </PieChart>
+      </div>
+      
       
     );
   }
   else{
     return (
-      
+      <div>
+      <button onClick={troca}>Gerar gráfico</button>   
       <PieChart className="graph" width={500} height={500}>
         
       </PieChart>
+     </div>
      
     );
   }

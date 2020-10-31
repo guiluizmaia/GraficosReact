@@ -10,7 +10,8 @@ function Barra() {
 const [inputs, setInputs] = useState([""]);
 const [nomes, setNomes] = useState([]);
 const [datas, setDatas] = useState([]);
-const [car, setCar] = useState(false);
+//const [car, setCar] = useState(true);
+var car =  new Boolean(true);
 
 
   const addButton = (e) =>{
@@ -37,16 +38,16 @@ const [car, setCar] = useState(false);
       setNomes([...nomes.filter((_, index) => index != position)])
     }
   }
-  const geraGraph = ()=>{
+   const geraGraph = ()=>{
     inputs.map((input, index)=>{
       var t = parseFloat(input)
       datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t}))
       setDatas([...datas]);
     })
-    console.log(datas)
-    setCar(!car);
-    console.log(car);
-  }
+    console.log(datas);
+    //car = !car;
+    console.log("car",!(!car));
+   }
 
   return (
     <div className="barra" >
@@ -73,10 +74,9 @@ const [car, setCar] = useState(false);
 
         ))
     }
-    <button onClick={geraGraph}>Gerar gráfico</button> 
-   <Graph t={car}/>
-    
-   
+    {/* <button onClick={geraGraph}>Gerar gráfico</button>  */}
+
+   <Graph /*t={true}*/ />
 
     </div>
     </div>
