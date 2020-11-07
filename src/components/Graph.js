@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {PieChart, Pie, Line, Legend, Tooltip} from 'recharts';
 import { isConstructorDeclaration } from 'typescript';
 import '../styles/Graph.css'
@@ -37,8 +37,16 @@ const data01 = [
 class Graph extends Component {
   constructor(props){
     super(props) 
-    var teste = props.t;
-    this.teste = teste;
+    
+    var inputs = props.inputs;
+    this.inputs = inputs;
+
+    var nomes = props.nomes;
+    this.nomes = nomes;
+
+    const geraGraph = props.geraGraph;
+    this.geraGraph = geraGraph;
+    
     this.state = {
       estado: false
     }
@@ -49,10 +57,17 @@ class Graph extends Component {
 
   render () {
     
-    const troca = ()=>{
-      this.setState({
-        estado: !this.state.estado
+    
+
+    const troca = async()=>{
+      
+      await this.setState({
+        estado: false
       })
+      this.setState({
+        estado: true
+      })
+      this.geraGraph();
     }
 
     if(this.state.estado){

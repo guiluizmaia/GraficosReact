@@ -1,17 +1,45 @@
 import React, { useState } from 'react';
 import Top from '../components/Top';
-
+import {PieChart, Pie, Line, Legend, Tooltip} from 'recharts';
 import '../styles/pages/Barra.css';
 
 import Graph from '../components/Graph';
 
 
-function Barra() {
+const data01 = [
+  {
+    "name": "Group A",
+    "value": "400"
+  },
+  {
+    "name": "Group B",
+    "value": "300"
+  },
+  {
+    "name": "Group C",
+    "value": 300
+  },
+  {
+    "name": "Group D",
+    "value": 200
+  },
+  {
+    "name": "Group E",
+    "value": 278
+  },
+  {
+    "name": "Group F",
+    "value": 189
+  }
+];
+
+function Barra(){
+
+
 const [inputs, setInputs] = useState([""]);
 const [nomes, setNomes] = useState([]);
 const [datas, setDatas] = useState([]);
-//const [car, setCar] = useState(true);
-var car =  new Boolean(true);
+const [t, setT] = useState(true);
 
 
   const addButton = (e) =>{
@@ -38,15 +66,15 @@ var car =  new Boolean(true);
       setNomes([...nomes.filter((_, index) => index != position)])
     }
   }
-   const geraGraph = ()=>{
+  const geraGraph = async()=>{
+    await setT(false);
     inputs.map((input, index)=>{
       var t = parseFloat(input)
       datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t}))
       setDatas([...datas]);
     })
-    console.log(datas);
-    //car = !car;
-    console.log("car",!(!car));
+    setT(true);
+    console.log(t);
    }
 
   return (
@@ -74,9 +102,19 @@ var car =  new Boolean(true);
 
         ))
     }
-    {/* <button onClick={geraGraph}>Gerar gráfico</button>  */}
+    <button onClick={geraGraph}>Gerar gráfico</button>
 
-   <Graph /*t={true}*/ />
+    {t ? <PieChart className="graph" width={500} height={500}>
+        <Pie data={datas /*data01*/} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" label/>
+       
+        <Legend verticalAlign="top" height={100}/>
+        <Tooltip cursor={false} />
+      </PieChart>
+    :
+    <PieChart className="graph" width={500} height={500}>
+       
+      </PieChart>}
+   {/* <Graph geraGraph={geraGraph}/> */}
 
     </div>
     </div>
