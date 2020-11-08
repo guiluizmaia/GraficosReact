@@ -9,7 +9,8 @@ import Graph from '../components/Graph';
 const data01 = [
   {
     "name": "Group A",
-    "value": "400"
+    "value": 400,
+    "fill": "#102255"
   },
   {
     "name": "Group B",
@@ -38,6 +39,7 @@ function Barra(){
 
 const [inputs, setInputs] = useState([""]);
 const [nomes, setNomes] = useState([]);
+const [fills, setFills] = useState([]);
 const [datas, setDatas] = useState([]);
 const [t, setT] = useState(true);
 
@@ -56,7 +58,12 @@ const [t, setT] = useState(true);
     nomes[index] = e.target.value;
   
     setNomes([...nomes]);
-}
+  }
+  const handleChangeFill = (e, index) =>{  
+    fills[index] = e.target.value;
+  
+    setFills([...fills]);
+  }
 
   const handleRemoteInput = (position) =>{
     
@@ -64,13 +71,14 @@ const [t, setT] = useState(true);
       setInputs([...inputs.filter((_, index) => index != position)])
       setDatas([...datas.filter((_, index) => index != position)])
       setNomes([...nomes.filter((_, index) => index != position)])
+      setFills([...fills.filter((_, index) => index != position)])
     }
   }
   const geraGraph = async()=>{
     await setT(false);
     inputs.map((input, index)=>{
       var t = parseFloat(input)
-      datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t}))
+      datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t, "fill": fills[index]}))
       setDatas([...datas]);
     })
     setT(true);
@@ -96,6 +104,7 @@ const [t, setT] = useState(true);
             {`Dado ${index+1} :`}
             <input id={`input-${index+1}`} value={input} type="text" name="name" placeholder={`Informe o dado ${index+1}`} onChange={(e) => handleChangeInput(e, index)} />
             <input id={`nome-${index+1}`} value={nomes[index]} type="text" name="name" placeholder={`Informe o nome do dado ${index+1}`} onChange={(e) => handleChangeName(e, index)} />
+            <input id={`fill-${index+1}`} value={fills[index]} type="text" name="name" placeholder={`Informe a cor do dado (hexadecimal) ${index+1}`} onChange={(e) => handleChangeFill(e, index)} />
             <br/>
             </label>
         </div></>          
@@ -105,7 +114,7 @@ const [t, setT] = useState(true);
     <button onClick={geraGraph}>Gerar gráfico</button>
 
     {t ? <PieChart className="graph" width={500} height={500}>
-        <Pie data={datas /*data01*/} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" label/>
+        <Pie data={datas /*data01*/} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} /*fill="#8884d8"*/ label/>
        
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
@@ -115,7 +124,7 @@ const [t, setT] = useState(true);
        
       </PieChart>}
    {/* <Graph geraGraph={geraGraph}/> */}
-
+   <button onClick={geraGraph}>Gerar gráfico</button>
     </div>
     </div>
     
