@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Top from '../components/Top';
-import {PieChart, Pie, Line, Legend, Tooltip} from 'recharts';
+import {BarChart, Bar, Line, Legend, Tooltip} from 'recharts';
 import '../styles/pages/Barra.css';
 
 import Graph from '../components/Graph';
@@ -113,16 +113,18 @@ const [t, setT] = useState(true);
     }
     <button onClick={geraGraph}>Gerar gráfico</button>
 
-    {t ? <PieChart className="graph" width={500} height={500}>
-        <Pie data={datas /*data01*/} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} /*fill="#8884d8"*/ label/>
+    {t ? <BarChart className="graph" width={500} height={500} data={data01}>
+      {data01.map((dados)=>{
+        <Bar dataKey={dados.name}/>
+      })}
        
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
-      </PieChart>
+      </BarChart>
     :
-    <PieChart className="graph" width={500} height={500}>
+    <BarChart className="graph" width={500} height={500}>
        
-      </PieChart>}
+      </BarChart>}
    {/* <Graph geraGraph={geraGraph}/> */}
    <button onClick={geraGraph}>Gerar gráfico</button>
     </div>
