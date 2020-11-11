@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Top from '../components/Top';
-import {BarChart, Bar, Line, Legend, Tooltip} from 'recharts';
+import {BarChart, Bar, Line, Legend, Tooltip, XAxis, YAxis} from 'recharts';
 import '../styles/pages/Barra.css';
 
 import Graph from '../components/Graph';
@@ -113,11 +113,10 @@ const [t, setT] = useState(true);
     }
     <button onClick={geraGraph}>Gerar gráfico</button>
 
-    {t ? <BarChart className="graph" width={500} height={500} data={data01}>
-      {data01.map((dados)=>{
-        <Bar dataKey={dados.name}/>
-      })}
-       
+    {t ? <BarChart className="graph" width={500} height={500} data={datas}>
+        <XAxis dataKey="name"/>
+        <YAxis />
+        <Bar dataKey="value"/>          
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
       </BarChart>
