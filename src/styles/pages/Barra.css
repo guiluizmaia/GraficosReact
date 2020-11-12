@@ -1,15 +1,17 @@
+
 .area{
     position: fixed;
     width: 80%;
-    height: auto;
+    height: 60%;
     top: 35%;
-    border: 2px solid #0d460d;;
+    border: 2px solid #0d460d;
     border-radius: 60px;
     margin-top: 10px;
     display: grid;
     justify-content: center;
     align-items: center;
     left: 10%;
+    overflow: auto;
 }
 .input{
     display: flex;

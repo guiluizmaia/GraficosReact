@@ -125,8 +125,8 @@ const [t, setT] = useState(true);
        
       </BarChart>}
    {/* <Graph geraGraph={geraGraph}/> */}
-   <button onClick={geraGraph}>Gerar gráfico</button>
     </div>
+   
     </div>
     
 )}
