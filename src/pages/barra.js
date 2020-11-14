@@ -74,10 +74,29 @@ const [t, setT] = useState(true);
       setFills([...fills.filter((_, index) => index != position)])
     }
   }
+  
   const geraGraph = async()=>{
     await setT(false);
     inputs.map((input, index)=>{
       var t = parseFloat(input)
+      datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t, "fill": fills[index]}))
+      setDatas([...datas]);
+    })
+    setT(true);
+    console.log(t);
+   }
+
+   const geraPorcent = async()=>{
+    await setT(false);
+    
+    var maximo = 0;
+    inputs.map((input, index)=>{
+      maximo = maximo + parseFloat(input)      
+    })
+
+    inputs.map((input, index)=>{
+      var t = parseFloat(input)
+      t = (t*100)/maximo
       datas[index] = JSON.parse(JSON.stringify({"name": nomes[index], "value": t, "fill": fills[index]}))
       setDatas([...datas]);
     })
@@ -112,6 +131,7 @@ const [t, setT] = useState(true);
         ))
     }
     <button onClick={geraGraph}>Gerar gráfico</button>
+    <button onClick={geraPorcent}>Gerar gráfico com porcentagem</button>
 
     {t ? <BarChart className="graph" width={500} height={500} data={datas}>
         <XAxis dataKey="name"/>
