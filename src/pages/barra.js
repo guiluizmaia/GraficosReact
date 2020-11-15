@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Top from '../components/Top';
-import {BarChart, Bar, Line, Legend, Tooltip, XAxis, YAxis} from 'recharts';
+import {BarChart, Bar, Line, Legend, Tooltip, XAxis, YAxis, Label} from 'recharts';
 import '../styles/pages/Barra.css';
 
 import Graph from '../components/Graph';
@@ -42,6 +42,8 @@ const [nomes, setNomes] = useState([]);
 const [fills, setFills] = useState([]);
 const [datas, setDatas] = useState([]);
 const [t, setT] = useState(true);
+const [XName, setXName] = useState([""]);
+const [YName, setYName] = useState([""]);
 
 
   const addButton = (e) =>{
@@ -74,6 +76,16 @@ const [t, setT] = useState(true);
       setFills([...fills.filter((_, index) => index != position)])
     }
   }
+
+  const handleChangeX = (e) => {
+      XName = e.target.value;
+      setXName = ([...XName]);
+  }
+
+  const handleChangeY = (e) => {
+    YName = e.target.value;
+    setYName = ([...YName]);
+}
   
   const geraGraph = async()=>{
     await setT(false);
@@ -111,7 +123,8 @@ const [t, setT] = useState(true);
 
     <div className="area">
     
-       
+      <input value={XName} type="text" name="x" placeholder={`Informe o nome do eixo X`} onChange={(e) => handleChangeX(e)} />
+      <input value={YName} type="text" name="y" placeholder={`Informe o nome do eixo Y`} onChange={(e) => handleChangeY(e)} />
     {
         inputs.map((input, index) =>(
             <>
@@ -134,8 +147,10 @@ const [t, setT] = useState(true);
     <button onClick={geraPorcent}>Gerar gráfico com porcentagem</button>
 
     {t ? <BarChart className="graph" width={500} height={500} data={datas}>
-        <XAxis dataKey="name"/>
-        <YAxis />
+        <XAxis dataKey="name">
+          <Label value="Pages of my website" offset={0} position="insideBottom"/>
+        </XAxis>
+        <YAxis label={{ value: 'pv of page', angle: -90, position: 'insideLeft' }} />
         <Bar dataKey="value"/>          
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
