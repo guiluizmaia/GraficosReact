@@ -17,3 +17,9 @@
     display: flex;
     margin: 20px;
 }
+
+.graph{
+    border-radius: 60px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}

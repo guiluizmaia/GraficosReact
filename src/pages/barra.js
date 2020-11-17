@@ -78,13 +78,13 @@ const [YName, setYName] = useState([""]);
   }
 
   const handleChangeX = (e) => {
-      XName = e.target.value;
-      setXName = ([...XName]);
+      XName[0] = e.target.value;
+      setXName([...XName]);
   }
 
   const handleChangeY = (e) => {
-    YName = e.target.value;
-    setYName = ([...YName]);
+    YName[0] = e.target.value;
+    setYName([...YName]);
 }
   
   const geraGraph = async()=>{
@@ -148,9 +148,9 @@ const [YName, setYName] = useState([""]);
 
     {t ? <BarChart className="graph" width={500} height={500} data={datas}>
         <XAxis dataKey="name">
-          <Label value="Pages of my website" offset={0} position="insideBottom"/>
+          <Label value={XName} offset={0} position="insideBottom"/>
         </XAxis>
-        <YAxis label={{ value: 'pv of page', angle: -90, position: 'insideLeft' }} />
+        <YAxis label={{ value: YName, angle: -90, position: 'insideLeft' }} />
         <Bar dataKey="value"/>          
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
