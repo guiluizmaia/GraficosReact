@@ -15,9 +15,23 @@
 }
 .input{
     display: flex;
+    align-items: center;
     margin: 20px;
 }
-
+.input button{
+    margin-top: 18px;
+    margin-right: 10px;
+    border-radius: 40px;
+    color: #0d460d;
+}
+.input input{
+    margin-right: 5px;
+    margin-left: 5px;    
+}
+input {
+    border-radius: 40px;
+    margin-top: 20px;
+}
 .graph{
     border-radius: 60px;
     margin-top: 10px;
