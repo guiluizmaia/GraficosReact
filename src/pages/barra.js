@@ -129,8 +129,10 @@ const [YName, setYName] = useState([""]);
         inputs.map((input, index) =>(
             <>
             <div className="input" key={index}>
-            <button onClick={addButton}>Adicionar mais um campo</button>
-            <button onClick={() => {handleRemoteInput(index)}}>Remover um campo</button>
+            {/* <button onClick={addButton}>Adicionar mais um campo</button> */}
+            <button onClick={addButton}>+</button>
+            {/* <button onClick={() => {handleRemoteInput(index)}}>Remover um campo</button> */}
+            <button onClick={() => {handleRemoteInput(index)}}>-  </button>
             <br/> 
             <label for={`input-${index+1}`}>
             {`Dado ${index+1} :`}
@@ -143,10 +145,10 @@ const [YName, setYName] = useState([""]);
 
         ))
     }
-    <button onClick={geraGraph}>Gerar gráfico</button>
-    <button onClick={geraPorcent}>Gerar gráfico com porcentagem</button>
+    <button onClick={geraGraph}>GERAR GRÁFICO</button>
+    <button onClick={geraPorcent}>GERAR GRÁFICO COM DADOS EM PORCENTAGEM</button>
 
-    {t ? <BarChart className="graph" width={500} height={500} data={datas}>
+    {t ? <BarChart className="graph" width={1200} height={500} data={datas}>
         <XAxis dataKey="name">
           <Label value={XName} offset={0} position="insideBottom"/>
         </XAxis>
