@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 import './styles/App.css';
 
-import Barra from './pages/barra';
+import Pizza from './pages/pizza';
 
 function App() {
     return (
      <>
-        <Barra /></> 
+        <Pizza /></> 
   );
 }
 
