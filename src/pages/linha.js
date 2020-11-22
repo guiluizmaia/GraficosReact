@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Top from '../components/Top';
-import {BarChart, Bar, CartesianGrid , Line, Legend, Tooltip, XAxis, YAxis, Label} from 'recharts';
+import {LineChart, CartesianGrid , Line, Legend, Tooltip, XAxis, YAxis, Label} from 'recharts';
 import '../styles/pages/Barra.css';
 
 import Graph from '../components/Graph';
@@ -148,20 +148,20 @@ const [YName, setYName] = useState([""]);
     <button onClick={geraGraph}>GERAR GRÁFICO</button>
     <button onClick={geraPorcent}>GERAR GRÁFICO COM DADOS EM PORCENTAGEM</button>
 
-    {t ? <BarChart className="graph" width={1200} height={500} data={datas}>
-    <CartesianGrid strokeDasharray="3 3" />
+    {t ? <LineChart className="graph" width={1200} height={500} data={datas}>
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name">
           <Label value={XName} offset={0} position="insideBottom"/>
         </XAxis>
         <YAxis label={{ value: YName, angle: -90, position: 'insideLeft' }} />
-        <Bar dataKey="value"/>          
+        <Line dataKey="value"/>          
         <Legend verticalAlign="top" height={100}/>
         <Tooltip cursor={false} />
-      </BarChart>
+      </LineChart>
     :
-    <BarChart className="graph" width={500} height={500}>
+    <LineChart className="graph" width={500} height={500}>
        <CartesianGrid strokeDasharray="3 3" />
-      </BarChart>}
+      </LineChart>}
    {/* <Graph geraGraph={geraGraph}/> */}
     </div>
    

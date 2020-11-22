@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 import './styles/App.css';
 
-import Pizza from './pages/pizza';
+import Linha from './pages/linha';
 
 function App() {
     return (
      <>
-        <Pizza /></> 
+        <Linha /></> 
   );
 }
 
