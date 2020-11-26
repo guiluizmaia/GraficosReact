@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 import './styles/App.css';
 
-import Linha from './pages/linha';
+import Routes from './routes';
 
 function App() {
     return (
      <>
-        <Linha /></> 
+        <Routes /></> 
   );
 }
 
