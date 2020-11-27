@@ -7,17 +7,17 @@ export default function Top(){
             <aside className="topo">
                 <h1>GRÁFICOS</h1>
                 <div className="link">
-                <a href="#">
+                <a href="/">
                     <span></span>
                     <span></span>
                     BARRAS
                 </a>
-                <a href="#">
+                <a href="/Linha">
                     <span></span>
                     <span></span>
                     LINHA
                 </a>
-                <a href="#">
+                <a href="/Pizza">
                     <span></span>
                     <span></span>
                     PIZZA
